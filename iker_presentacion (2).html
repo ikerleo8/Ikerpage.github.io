@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iker Leonel Alvarez Diaz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #FAFAF8;
+      --surface:  #FFFFFF;
+      --ink:      #1A1A18;
+      --muted:    #8A8A82;
+      --light:    #E8E8E4;
+      --accent:   #2D4A3E;
+      --gold:     #B8972E;
+      --rule:     #D4D4CC;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 64px;
+      background: rgba(250,250,248,.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+      z-index: 100;
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: .01em;
+    }
+    .nav-brand em { font-style: italic; color: var(--gold); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px 64px 80px;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero-left {}
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 5vw, 68px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -.01em;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-surname {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 5vw, 68px);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -.01em;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .hero-desc {
+      font-family: 'EB Garamond', serif;
+      font-size: 20px;
+      color: #555550;
+      line-height: 1.65;
+      max-width: 400px;
+      margin-bottom: 40px;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 28px;
+      background: var(--ink);
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: background .2s;
+    }
+    .hero-cta:hover { background: var(--accent); }
+    .hero-cta svg { transition: transform .2s; }
+    .hero-cta:hover svg { transform: translateX(4px); }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--rule);
+      background: var(--surface);
+    }
+    .info-row {
+      display: flex;
+      align-items: baseline;
+      padding: 18px 28px;
+      border-bottom: 1px solid var(--rule);
+      gap: 20px;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      min-width: 90px;
+    }
+    .info-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      color: var(--ink);
+    }
+
+    /* ── RULE ── */
+    hr.section-rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 0;
+    }
+
+    /* ── SECTION ── */
+    .section-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 88px 64px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+    .section-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-style: italic;
+      color: var(--gold);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 600;
+      letter-spacing: -.01em;
+      color: var(--ink);
+    }
+    .section-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* ── ABOUT ── */
+    .about-text {
+      font-family: 'EB Garamond', serif;
+      font-size: 21px;
+      line-height: 1.75;
+      color: #444440;
+      max-width: 680px;
+    }
+
+    /* ── CURSOS ── */
+    .courses-list { display: flex; flex-direction: column; }
+    .course-item {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      color: inherit;
+      transition: background .15s;
+    }
+    .course-item:first-child { border-top: 1px solid var(--rule); }
+    .course-item:hover .course-arrow { opacity: 1; transform: translateX(0); }
+    .course-item:hover .course-name-text { color: var(--accent); }
+    .course-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-style: italic;
+      color: var(--gold);
+      text-align: right;
+    }
+    .course-name-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--ink);
+      transition: color .2s;
+      margin-bottom: 3px;
+    }
+    .course-prof-text {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: .02em;
+    }
+    .course-arrow {
+      font-size: 18px;
+      color: var(--accent);
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity .2s, transform .2s;
+    }
+    .course-no-link { cursor: default; }
+    .course-no-link .course-arrow { display: none; }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .contact-block {
+      background: var(--surface);
+      padding: 40px 40px;
+    }
+    .contact-block-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .contact-block-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .contact-block-sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ink);
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 2px;
+      transition: color .2s, border-color .2s;
+    }
+    .contact-link:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── PEERS ── */
+    .peers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .peer-block {
+      background: var(--surface);
+      padding: 36px 36px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: background .15s;
+    }
+    .peer-block:hover { background: #F4F4F0; }
+    .peer-initial {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-style: italic;
+      color: var(--light);
+      margin-bottom: 8px;
+    }
+    .peer-name-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .peer-url-text {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .04em;
+    }
+    .peer-arrow-text {
+      margin-top: 16px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 36px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .footer-right {
+      font-size: 11px;
+      color: var(--rule);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { gap: 20px; }
+      .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 48px; }
+      .section-wrap { padding: 64px 24px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 12px; padding: 28px 24px; text-align: center; }
+      .course-item { grid-template-columns: 36px 1fr auto; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Iker <em>Alvarez</em></div>
+  <ul class="nav-links">
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#cursos">Cursos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Ciencias de la Computación · UCSP</div>
+    <h1 class="hero-name"><em>Iker</em> Leonel</h1>
+    <div class="hero-surname">Alvarez Diaz</div>
+    <p class="hero-desc">Estudiante apasionado por la tecnología y su impacto en la sociedad. Busca construir conocimiento sólido y aportar valor real al mundo.</p>
+    <a class="hero-cta" href="https://www.linkedin.com/in/iker-leonel-alvarez-diaz-379940352/" target="_blank" rel="noopener">
+      Ver LinkedIn
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <div class="hero-right">
+    <div class="info-row">
+      <span class="info-label">Universidad</span>
+      <span class="info-val">Católica San Pablo</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Carrera</span>
+      <span class="info-val">Ciencias de la Computación</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Ciudad</span>
+      <span class="info-val">Arequipa, Perú</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Estado</span>
+      <span class="info-val">Primer año · en curso</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Interés</span>
+      <span class="info-val">Tecnología & Sociedad</span>
+    </div>
+  </div>
+</div>
+
+<hr class="section-rule"/>
+
+<!-- SOBRE MÍ -->
+<div class="section-wrap" id="sobre-mi">
+  <div class="section-header">
+    <span class="section-num">i.</span>
+    <h2 class="section-title">Sobre mí</h2>
+  </div>
+  <p class="about-text">
+    Elegí Ciencias de la Computación porque me fascina cómo la tecnología avanza y transforma el mundo. Mi meta es convertirme en un profesional capaz de aportar algo concreto a la sociedad cuando culmine la carrera. Cada obstáculo lo veo como una oportunidad de crecer, desafiarme y construir el conocimiento que necesito para marcar una diferencia real.
+  </p>
+</div>
+
+<hr class="section-rule"/>
+
+<!-- CURSOS -->
+<div class="section-wrap" id="cursos">
+  <div class="section-header">
+    <span class="section-num">ii.</span>
+    <h2 class="section-title">Cursos del semestre</h2>
+  </div>
+  <div class="courses-list">
+
+    <a class="course-item" href="https://www.linkedin.com/in/angel-rodriguez-cruz-58b78b85/" target="_blank" rel="noopener">
+      <span class="course-num">01</span>
+      <div>
+        <div class="course-name-text">Comunicación</div>
+        <div class="course-prof-text">Ángel Rodríguez Cruz</div>
+      </div>
+      <span class="course-arrow">→</span>
+    </a>
+
+    <a class="course-item" href="https://www.linkedin.com/in/kelly-vizconde-la-motta-3a57a4143/" target="_blank" rel="noopener">
+      <span class="course-num">02</span>
+      <div>
+        <div class="course-name-text">Fundamentos de Programación</div>
+        <div class="course-prof-text">Kelly Vizconde La Motta</div>
+      </div>
+      <span class="course-arrow">→</span>
+    </a>
+
+    <a class="course-item" href="https://www.linkedin.com/in/meyber-yuliana-vargas-maquera-de-n%C3%BA%C3%B1ez-8224163b8/" target="_blank" rel="noopener">
+      <span class="course-num">03</span>
+      <div>
+        <div class="course-name-text">Fundamentos Matemáticos para Computación</div>
+        <div class="course-prof-text">Meyber Y. Vargas Maquera</div>
+      </div>
+      <span class="course-arrow">→</span>
+    </a>
+
+    <div class="course-item course-no-link">
+      <span class="course-num">04</span>
+      <div>
+        <div class="course-name-text">Introducción a Computación</div>
+        <div class="course-prof-text"></div>
+      </div>
+    </div>
+
+    <div class="course-item course-no-link">
+      <span class="course-num">05</span>
+      <div>
+        <div class="course-name-text">Introducción a la Vida Universitaria</div>
+        <div class="course-prof-text"></div>
+      </div>
+    </div>
+
+    <div class="course-item course-no-link">
+      <span class="course-num">06</span>
+      <div>
+        <div class="course-name-text">Lógica</div>
+        <div class="course-prof-text"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="section-rule"/>
+
+<!-- CONTACTO -->
+<div class="section-wrap" id="contacto">
+  <div class="section-header">
+    <span class="section-num">iii.</span>
+    <h2 class="section-title">Contacto</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-block">
+      <div class="contact-block-label">Red profesional</div>
+      <div class="contact-block-title">LinkedIn</div>
+      <div class="contact-block-sub">Iker Leonel Alvarez Diaz</div>
+      <a class="contact-link" href="https://www.linkedin.com/in/iker-leonel-alvarez-diaz-379940352/" target="_blank" rel="noopener">
+        Ver perfil →
+      </a>
+    </div>
+    <div class="contact-block" style="background:#F7F7F4;">
+      <div class="contact-block-label">Compañeros</div>
+      <div class="contact-block-title">Red estudiantil</div>
+      <div class="contact-block-sub"></div>
+      <a class="contact-link" href="#peers">Ver compañeros →</a>
+    </div>
+  </div>
+</div>
+
+<hr class="section-rule"/>
+
+<!-- COMPAÑEROS -->
+<div class="section-wrap" id="peers">
+  <div class="section-header">
+    <span class="section-num">iv.</span>
+    <h2 class="section-title">Compañeros</h2>
+  </div>
+  <div class="peers-grid">
+    <a class="peer-block" href="https://mathias-rodrigo-aragon-ventura.github.io/" target="_blank" rel="noopener">
+      <div class="peer-initial">Ma.</div>
+      <div class="peer-name-text">Mathias Rodrigo Aragon Ventura</div>
+      <div class="peer-url-text">mathias-rodrigo-aragon-ventura.github.io</div>
+      <div class="peer-arrow-text">Ver portafolio →</div>
+    </a>
+    <a class="peer-block" href="https://arianaalexiapachecozumba.github.io/" target="_blank" rel="noopener">
+      <div class="peer-initial">Ar.</div>
+      <div class="peer-name-text">Ariana Alexia Pacheco Zumba</div>
+      <div class="peer-url-text">arianaalexiapachecozumba.github.io</div>
+      <div class="peer-arrow-text">Ver portafolio →</div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-brand">Iker Leonel Alvarez Diaz</span>
+  <span class="footer-right">UCSP · Arequipa · 2025</span>
+</footer>
+
+</body>
+</html>
